@@ -1,4 +1,4 @@
-<svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+<svg width="200" height="140" viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="snakeBody" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#3A7BFF"/>
@@ -6,28 +6,67 @@
     </linearGradient>
   </defs>
 
-  <!-- Background circle -->
-  <circle cx="80" cy="80" r="70" fill="#0F172A"/>
+  <!-- Background -->
+  <rect x="0" y="0" width="200" height="140" rx="24" fill="#020617"/>
 
   <!-- Snake body -->
-  <path d="M40 110
-           C 30 90, 35 70, 50 60
-           C 70 50, 90 55, 100 70
-           C 110 85, 115 100, 110 115
-           C 105 130, 90 135, 75 130
-           C 60 125, 55 120, 50 115
-           Z"
-        fill="url(#snakeBody)" />
+  <path id="snake"
+        d="M 20 90
+           C 40 60, 70 60, 90 80
+           C 110 100, 140 100, 160 80
+           C 175 65, 185 50, 180 35"
+        fill="none"
+        stroke="url(#snakeBody)"
+        stroke-width="10"
+        stroke-linecap="round"/>
 
   <!-- Snake head -->
-  <circle cx="50" cy="60" r="12" fill="#6C63FF"/>
+  <circle id="head" cx="180" cy="35" r="9" fill="#6C63FF"/>
 
   <!-- Eyes -->
-  <circle cx="46" cy="58" r="2" fill="#FFFFFF"/>
-  <circle cx="54" cy="58" r="2" fill="#FFFFFF"/>
+  <circle cx="177" cy="33" r="1.6" fill="#FFFFFF"/>
+  <circle cx="183" cy="33" r="1.6" fill="#FFFFFF"/>
 
   <!-- Tongue -->
-  <path d="M50 66 L50 74 L46 78" stroke="#FF4B4B" stroke-width="2" fill="none" />
+  <path d="M180 39 L180 45 L176 47"
+        stroke="#FF4B4B"
+        stroke-width="2"
+        fill="none"/>
+
+  <!-- Soft glow -->
+  <circle cx="120" cy="80" r="10" fill="#FFFFFF" opacity="0.12"/>
+
+  <!-- Animation: subtle breathing / movement -->
+  <animate
+    xlink:href="#snake"
+    attributeName="d"
+    dur="3s"
+    repeatCount="indefinite"
+    values="
+      M 20 90
+      C 40 60, 70 60, 90 80
+      C 110 100, 140 100, 160 80
+      C 175 65, 185 50, 180 35;
+
+      M 20 88
+      C 40 58, 70 62, 90 82
+      C 110 102, 140 98, 160 78
+      C 175 63, 185 48, 180 33;
+
+      M 20 90
+      C 40 60, 70 60, 90 80
+      C 110 100, 140 100, 160 80
+      C 175 65, 185 50, 180 35;
+    "/>
+
+  <animate
+    xlink:href="#head"
+    attributeName="cy"
+    dur="3s"
+    repeatCount="indefinite"
+    values="35;33;35"/>
+</svg>
+
 
   <!-- Small highlight -->
   <circle cx="88" cy="78" r="4" fill="#FFFFFF" opacity="0.15"/>
