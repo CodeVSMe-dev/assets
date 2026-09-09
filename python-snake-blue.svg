@@ -1,17 +1,16 @@
-<svg width="220" height="150" viewBox="0 0 220 150" xmlns="http://www.w3.org/2000/svg">
+<svg width="240" height="160" viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <!-- Neon Glow -->
-    <filter id="neonGlow">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
+    <filter id="pixelGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
       <feMerge>
-        <feMergeNode in="blur"/>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
 
     <!-- Neon Gradient -->
-    <linearGradient id="neonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="pixelNeon" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#4F8CFF"/>
       <stop offset="50%" stop-color="#6C63FF"/>
       <stop offset="100%" stop-color="#9A6BFF"/>
@@ -19,33 +18,35 @@
   </defs>
 
   <!-- Background -->
-  <rect width="220" height="150" rx="22" fill="#0A0F1F"/>
+  <rect width="240" height="160" rx="20" fill="#0A0F1F"/>
 
-  <!-- Snake body -->
-  <path d="M30 100
-           C60 55, 100 55, 130 80
-           C160 105, 185 95, 200 60"
-        stroke="url(#neonGrad)"
-        stroke-width="14"
-        fill="none"
-        stroke-linecap="round"
-        filter="url(#neonGlow)"/>
+  <!-- Pixel snake body -->
+  <path d="
+    M30 110
+    L50 90
+    L70 100
+    L90 80
+    L110 95
+    L130 75
+    L150 90
+    L170 70
+    L190 85
+    L210 60
+  "
+  stroke="url(#pixelNeon)"
+  stroke-width="14"
+  stroke-linecap="square"
+  fill="none"
+  filter="url(#pixelGlow)"/>
 
-  <!-- Snake head -->
-  <circle cx="200" cy="60" r="14" fill="#6C63FF" filter="url(#neonGlow)"/>
+  <!-- Pixel head -->
+  <rect x="205" y="50" width="20" height="20" fill="#6C63FF" filter="url(#pixelGlow)"/>
 
   <!-- Eyes -->
-  <circle cx="195" cy="57" r="2.5" fill="#ffffff"/>
-  <circle cx="205" cy="57" r="2.5" fill="#ffffff"/>
+  <rect x="208" y="53" width="4" height="4" fill="#ffffff"/>
+  <rect x="216" y="53" width="4" height="4" fill="#ffffff"/>
 
   <!-- Tongue -->
-  <path d="M200 68 L200 78 L194 82"
-        stroke="#FF3B3B"
-        stroke-width="2.5"
-        fill="none"
-        filter="url(#neonGlow)"/>
-
-  <!-- Neon highlight -->
-  <circle cx="120" cy="80" r="12" fill="#ffffff" opacity="0.12"/>
+  <rect x="212" y="70" width="3" height="10" fill="#FF3B3B" filter="url(#pixelGlow)"/>
 </svg>
 
